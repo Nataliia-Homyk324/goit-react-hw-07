@@ -5,6 +5,7 @@ import * as Yup from 'yup';
 import { addContact } from '../../redux/contactsOps';
 import { useDispatch } from 'react-redux';
 import { BsPhone, BsPerson } from 'react-icons/bs';
+
 const FeedbackSchema = Yup.object().shape({
   name: Yup.string()
     .min(3, 'Too Short!')
