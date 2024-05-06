@@ -43,3 +43,11 @@
     padding: 10px 15px;
     margin-left: auto;
 }
+.iconInput {
+    position: absolute;
+    top: 24px;
+    left: 10px;
+    color: rgba(46, 47, 66, 0.60);
+
+    transition: color .5s cubic-bezier(.4, 0, .2, 1);
+}

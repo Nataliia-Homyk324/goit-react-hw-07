@@ -4,15 +4,14 @@ import { useId } from 'react';
 import * as Yup from 'yup';
 import { addContact } from '../../redux/contactsOps';
 import { useDispatch } from 'react-redux';
-
+import { BsPhone, BsPerson } from 'react-icons/bs';
 const FeedbackSchema = Yup.object().shape({
   name: Yup.string()
     .min(3, 'Too Short!')
     .max(50, 'Too Long!')
     .required('Required'),
   number: Yup.string()
-    .min(3, 'Too Short!')
-    .max(50, 'Too Long!')
+    .matches(/^\d{3}-\d{3}-\d{4}$/, 'Invalid phone number format')
     .required('Required'),
 });
 
@@ -24,12 +23,6 @@ export default function ContactForm() {
   const nameFieldId = useId();
   const numberFieldId = useId();
 
-  // const dispatch = useDispatch();
-
-  // const handleSubmit = (values, actions) => {
-  //   dispatch(addContact({ id: nanoid(), ...values }));
-  //   actions.resetForm();
-  // };
   const dispatch = useDispatch();
 
   const handleSubmit = (values, actions) => {
@@ -51,7 +44,9 @@ export default function ContactForm() {
             type="text"
             name="name"
             id={nameFieldId}
+            placeholder="Name"
           />
+          <BsPerson className={css.iconInput} size="20" />
           <ErrorMessage name="name" component="span" />
         </div>
 
@@ -62,7 +57,9 @@ export default function ContactForm() {
             type="text"
             name="number"
             id={numberFieldId}
+            placeholder="xxx-xxx-xxxx"
           />
+          <BsPhone className={css.iconInput} size="20" />
           <ErrorMessage name="number" component="span" />
         </div>
         <button className={css.buttonAdd} type="submit">
