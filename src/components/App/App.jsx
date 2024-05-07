@@ -5,8 +5,9 @@ import ContactList from '../ContactList/ContactList';
 import { useDispatch, useSelector } from 'react-redux';
 import { useEffect } from 'react';
 import { fetchContacts } from '../../redux/contactsOps';
-import Loader from '../Loader/Loader';
+
 import Error from '../Error/Error';
+import { ThreeDots } from 'react-loader-spinner';
 
 export default function App() {
   const dispatch = useDispatch();
@@ -22,7 +23,20 @@ export default function App() {
       <h1 className={css.header}>Phonebook</h1>
       <ContactForm />
       <SearchBox />
-      {isLoading && <Loader>Loading message</Loader>}
+      <div className={css.containerLoader}>
+        {isLoading && !isError && (
+          <ThreeDots
+            visible={true}
+            height="80"
+            width="80"
+            color="#6f6e6e"
+            radius="9"
+            ariaLabel="three-dots-loading"
+            wrapperStyle={{}}
+            wrapperClass=""
+          />
+        )}
+      </div>
       {isError && <Error>Error message</Error>}
       <ContactList />
     </div>
