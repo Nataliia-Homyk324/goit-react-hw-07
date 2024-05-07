@@ -5,14 +5,14 @@ import ContactList from '../ContactList/ContactList';
 import { useDispatch, useSelector } from 'react-redux';
 import { useEffect } from 'react';
 import { fetchContacts } from '../../redux/contactsOps';
-
+import { selectIsLoading, selectError } from '../../redux/selectors';
 import Error from '../Error/Error';
 import { ThreeDots } from 'react-loader-spinner';
 
 export default function App() {
   const dispatch = useDispatch();
-  const isLoading = useSelector(state => state.contacts.loading);
-  const isError = useSelector(state => state.contacts.error);
+  const isLoading = useSelector(selectIsLoading);
+  const isError = useSelector(selectError);
 
   useEffect(() => {
     dispatch(fetchContacts());
