@@ -12,3 +12,10 @@
     border-radius: 5px;
     padding: 10px;
 }
+
+.infoText {
+    font-size: 20px;
+    line-height: 1.33;
+    letter-spacing: -.01em;
+    text-align: center;
+}
