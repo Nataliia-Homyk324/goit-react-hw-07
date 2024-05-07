@@ -37,7 +37,12 @@ export default function App() {
           />
         )}
       </div>
-      {isError && <Error>Error message</Error>}
+      {isError && (
+        <Error>
+          Whoops, something went wrong! <br />
+          Please try reloading this page!
+        </Error>
+      )}
       <ContactList />
     </div>
   );
